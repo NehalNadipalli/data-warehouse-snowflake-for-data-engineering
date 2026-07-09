@@ -134,7 +134,7 @@ Final Analytics Tables
 
 ## 🏗️ Architecture
 
-![Pipeline Architecture](images/architecture.png)
+![Pipeline Architecture](architecture.png)
 
 ---
 
