@@ -1,4 +1,4 @@
--- 05_streams_tasks.sql
+-- sql/05_streams_tasks.sql
 -- Streams track new rows landing in raw.orders / raw.order_items.
 -- A Task runs every 5 minutes, consumes the streams, and merges
 -- clean, deduplicated rows into the analytics layer.
