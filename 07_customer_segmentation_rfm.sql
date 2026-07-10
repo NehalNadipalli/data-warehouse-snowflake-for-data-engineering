@@ -1,4 +1,4 @@
--- 07_customer_segmentation_rfm.sql
+-- sql/07_customer_segmentation_rfm.sql
 --
 -- NEW addition on top of the base pipeline: RFM (Recency, Frequency,
 -- Monetary) customer segmentation, computed from the curated fact/dim
