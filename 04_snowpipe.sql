@@ -1,4 +1,4 @@
--- 04_snowpipe.sql
+-- sql/04_snowpipe.sql
 -- One pipe per source table. AUTO_INGEST relies on S3 event notifications
 -- (SQS) pointed at each pipe -- see docs/RUNBOOK.md for the console steps.
 
