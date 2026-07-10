@@ -1,4 +1,4 @@
--- 06_analytics_tables.sql
+-- sql/06_analytics_tables.sql
 -- dim_customers / dim_products are small reference tables -- simple full
 -- refresh is fine at this scale, no stream/task needed.
 -- (fact_orders / fact_order_items are created in 05_streams_tasks.sql,
