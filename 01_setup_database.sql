@@ -1,4 +1,4 @@
--- 01_setup_database.sql
+-- sql/01_setup_database.sql
 -- Run as ACCOUNTADMIN or a role with CREATE DATABASE / WAREHOUSE privileges.
 
 CREATE WAREHOUSE IF NOT EXISTS ecommerce_wh
