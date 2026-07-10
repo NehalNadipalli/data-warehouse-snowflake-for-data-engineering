@@ -1,4 +1,4 @@
--- 02_staging_tables.sql
+-- sql/02_staging_tables.sql
 -- Raw landing tables. Column types are intentionally loose (VARCHAR/NUMBER)
 -- since this is the "as-loaded" layer -- cleanup happens downstream.
 
