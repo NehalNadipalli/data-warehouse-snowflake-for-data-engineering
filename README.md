@@ -1,169 +1,169 @@
-# ❄️ Data Warehouse with Snowflake for Data Engineering
+# Data Warehouse with Snowflake for Data Engineering
 
 ![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=for-the-badge&logo=snowflake&logoColor=white)
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
 ![Apache NiFi](https://img.shields.io/badge/Apache%20NiFi-728E9B?style=for-the-badge&logo=apache&logoColor=white)
 ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
 
-An end-to-end real-time data engineering pipeline using *Apache NiFi, **AWS S3, **Snowflake, **Snowpipe, **Streams, and **Tasks*.
+An end-to-end, real-time data engineering pipeline that ingests, stores, transforms, and models data using **Apache NiFi**, **AWS S3**, and **Snowflake** (Snowpipe, Streams, and Tasks).
 
----
-
-## 📌 Overview
-
-This project demonstrates a modern cloud data warehouse pipeline that ingests, stores, processes, and transforms data for analytics.
-
-Apache NiFi is used for data ingestion, AWS S3 works as the cloud landing zone, and Snowflake handles automated loading, change data capture, and SQL-based transformation.
+![Architecture overview](./images/architecture.svg)
 
 ---
 
-## 🏗️ Architecture
+## Table of contents
 
-![Pipeline Architecture](images/architecture.png)
+- [Overview](#overview)
+- [Architecture](#architecture)
+- [Tools and technologies](#tools-and-technologies)
+- [Key features](#key-features)
+- [Repository structure](#repository-structure)
+- [Getting started](#getting-started)
+- [Pipeline walkthrough](#pipeline-walkthrough)
+- [Customer segmentation (RFM)](#customer-segmentation-rfm)
+- [Screenshots](#screenshots)
+- [Future improvements](#future-improvements)
+- [Author](#author)
 
-### Pipeline Flow
+## Overview
 
-1.⁠ ⁠Source data is ingested using Apache NiFi.
-2.⁠ ⁠Apache NiFi sends the data to AWS S3.
-3.⁠ ⁠Snowpipe continuously loads new files from S3 into Snowflake staging tables.
-4.⁠ ⁠Snowflake Streams track new and changed data.
-5.⁠ ⁠Snowflake Tasks run automated SQL transformations.
-6.⁠ ⁠Final analytics tables are created for reporting and analysis.
+The goal of this project is to build a modern cloud data warehouse pipeline that ingests, processes, and organizes data for analytics in real time.
 
----
+Apache NiFi handles data movement from source to cloud storage, AWS S3 acts as the durable landing zone, and Snowflake handles automated loading, change tracking, and transformation — turning raw files into query-ready analytics tables with minimal manual intervention.
 
-## 🛠️ Tools and Technologies
+## Architecture
+Source Data
 
-•⁠  ⁠Snowflake
-•⁠  ⁠AWS S3
-•⁠  ⁠Apache NiFi
-•⁠  ⁠Snowpipe
-•⁠  ⁠Snowflake Streams
-•⁠  ⁠Snowflake Tasks
-•⁠  ⁠SQL
-•⁠  ⁠Data Warehousing
-•⁠  ⁠ETL / ELT
-
----
-
-## ✨ Key Features
-
-•⁠  ⁠Real-time data ingestion
-•⁠  ⁠Automated loading from AWS S3 to Snowflake
-•⁠  ⁠Change Data Capture using Streams
-•⁠  ⁠Scheduled SQL transformations using Tasks
-•⁠  ⁠Cloud-based data warehouse architecture
-•⁠  ⁠Analytics-ready final tables
-
----
-
-## 📂 Repository Structure
-
-⁠ text
-data-warehouse-snowflake-for-data-engineering/
 │
-├── images/
-│   └── architecture.png
+
+▼
+
+Apache NiFi  ──────────  ingests and routes data
+
 │
-├── SQL Code/
-│   └── Snowflake SQL scripts
+
+▼
+
+AWS S3  ───────────────  durable cloud storage (landing zone)
+
 │
-├── Real-Time Data Streaming using Apache Nifi, AWS, Snowpipe, Stream & Task/
-│   └── Pipeline files and documentation
+
+▼
+
+Snowpipe  ─────────────  continuous, automated loading
+
 │
-├── README.md
+
+▼
+
+Snowflake Staging Tables
+
+│
+
+▼
+
+Streams & Tasks  ──────  change data capture + scheduled transforms
+
+│
+
+▼
+
+Final Analytics Tables
+
+A rendered version of this diagram is in [`images/architecture.svg`](./images/architecture.svg).
+
+## Tools and technologies
+
+- **Snowflake** — cloud data warehouse
+- **SQL** — data modeling and transformation
+- **AWS S3** — cloud object storage
+- **Apache NiFi** — data ingestion and flow orchestration
+- **Snowpipe** — continuous, automated data loading
+- **Streams** — change data capture (CDC)
+- **Tasks** — scheduled, automated SQL execution
+- **Jupyter Notebook** — exploration and testing
+
+## Key features
+
+- Real-time data ingestion from source systems
+- Automated, continuous loading into Snowflake via Snowpipe
+- Cloud-based staging using AWS S3
+- Change data capture with Snowflake Streams
+- Automated transformations with Snowflake Tasks
+- SQL-based data modeling from raw to analytics-ready tables
+- Customer segmentation using RFM (Recency, Frequency, Monetary) analysis
+
+## Repository structure
+.
+
+├── nifi-pipeline/          # Apache NiFi flow definitions and configuration
+
+├── sql/                    # Snowflake SQL: staging, streams, tasks, models
+
+├── data/                   # Sample dataset generator + CSVs
+
+├── docs/                   # Setup runbook
+
+├── images/                 # Diagrams and screenshots referenced in this README
+
+├── .gitignore
+
 ├── LICENSE
-└── .gitignore
- ⁠
 
----
+└── README.md
 
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
-•⁠  ⁠Snowflake account
-•⁠  ⁠AWS account with S3 bucket
-•⁠  ⁠Apache NiFi installed
-•⁠  ⁠Basic SQL knowledge
+- A [Snowflake](https://signup.snowflake.com/) account (trial tier works)
+- An AWS account with an S3 bucket and an IAM role/user with S3 read access
+- Apache NiFi installed locally or running in a container
+- Python 3.9+ and Jupyter, if you want to run the notebooks
 
-### Steps
+### Setup
 
-1.⁠ ⁠Create an AWS S3 bucket for raw data storage.
-2.⁠ ⁠Configure Apache NiFi to ingest source data and send it to S3.
-3.⁠ ⁠Create Snowflake database, schema, file format, and external stage.
-4.⁠ ⁠Configure Snowpipe for continuous data loading.
-5.⁠ ⁠Create Streams to capture changes.
-6.⁠ ⁠Create Tasks to automate transformations.
-7.⁠ ⁠Query final analytics tables in Snowflake.
+1. Clone the repo:
+```bash
+   git clone https://github.com/NehalNadipalli/data-warehouse-snowflake-for-data-engineering.git
+   cd data-warehouse-snowflake-for-data-engineering
+```
+2. In Snowflake, run the setup scripts in `sql/` in order to create the database, staging tables, analytics tables, and the RFM segmentation.
+3. (Optional, full pipeline) Create an S3 bucket, wire up Apache NiFi, and set up Snowpipe for auto-ingestion — see [`docs/RUNBOOK.md`](./docs/RUNBOOK.md) for step-by-step instructions.
 
----
+## Pipeline walkthrough
 
-## 📊 Project Workflow
+1. **Ingestion** — Apache NiFi pulls data from the source and routes it to AWS S3.
+2. **Storage** — Files land in a designated S3 bucket/prefix.
+3. **Auto-load** — Snowpipe detects new files (via S3 event notifications) and loads them into a Snowflake staging table.
+4. **Change capture** — A Snowflake Stream tracks new/changed rows in the staging table.
+5. **Transformation** — A scheduled Snowflake Task consumes the stream and merges/transforms data into final analytics tables.
+6. **Analytics** — Downstream tools or dashboards query the analytics tables directly.
 
-⁠ text
-Source Data
-   ↓
-Apache NiFi
-   ↓
-AWS S3
-   ↓
-Snowpipe
-   ↓
-Snowflake Staging Tables
-   ↓
-Streams and Tasks
-   ↓
-Final Analytics Tables
- ⁠
+## Customer segmentation (RFM)
 
----
+On top of the base pipeline, this project includes an RFM (Recency, Frequency, Monetary) analysis that scores every customer and groups them into segments — Champion, Loyal, At risk, Regular, Lapsed — to support targeted retention efforts. See [`sql/07_customer_segmentation_rfm.sql`](./sql/07_customer_segmentation_rfm.sql).
 
-## 🧠 Skills Demonstrated
+## Screenshots
 
-•⁠  ⁠Data Engineering
-•⁠  ⁠ETL Pipeline Development
-•⁠  ⁠Cloud Data Warehousing
-•⁠  ⁠Snowflake SQL
-•⁠  ⁠Real-Time Data Ingestion
-•⁠  ⁠AWS S3 Integration
-•⁠  ⁠Change Data Capture
-•⁠  ⁠Pipeline Automation
+### Snowflake query results
+![Customer RFM segmentation](./images/customer_rfm_results.png)
 
----
+### Apache NiFi flow
+Coming soon
 
-## 🏗️ Architecture
+### AWS S3 bucket
+Coming soon
 
-![Pipeline Architecture](architecture.png)
+## Future improvements
 
----
+- [ ] Wire up Apache NiFi + AWS S3 + Snowpipe for full auto-ingestion (currently loaded via Snowflake's Load Data wizard)
+- [ ] Add dbt for transformation and testing
+- [ ] Add a lightweight BI dashboard (e.g. Streamlit or Power BI) on top of the analytics tables
+- [ ] Add CI to lint/validate SQL on every push
 
-## 📸 Project Screenshots
+## Author
 
-### Apache NiFi Flow
-Coming Soon
-
-### Snowflake Query Results
-Coming Soon
-
-### AWS S3 Bucket
-Coming Soon
-
----
-
-## 🔮 Future Improvements
-
-•⁠  ⁠Add dbt for SQL transformation management
-•⁠  ⁠Add Airflow for orchestration
-•⁠  ⁠Add dashboard using Power BI or Streamlit
-•⁠  ⁠Add data quality checks
-•⁠  ⁠Add CI/CD pipeline for SQL deployment
-•⁠  ⁠Add sample dataset so others can run the project
-
----
-
-## 👨‍💻 Author
-
-*Nehal Nadipalli*
-
-GitHub: [NehalNadipalli](https://github.com/NehalNadipalli)
+**Nehal Nadipalli**
+[GitHub](https://github.com/NehalNadipalli) · [LinkedIn](https://www.linkedin.com/in/nehal-nadipalli-8019a71a2/)
