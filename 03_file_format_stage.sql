@@ -1,4 +1,4 @@
--- 03_file_format_stage.sql
+-- sql/03_file_format_stage.sql
 -- Points Snowflake at the S3 bucket that NiFi writes into.
 -- Replace <BUCKET_NAME>, <AWS_ACCOUNT_ID>, and <IAM_ROLE_NAME> with your own.
 -- Full storage-integration setup (trust policy, external ID) is documented at:
